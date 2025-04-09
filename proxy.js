@@ -2,6 +2,9 @@ const express = require("express");
 const axios = require("axios");
 const app = express();
 
+// Use the Render-assigned port (default to 3000 for local dev)
+const PORT = process.env.PORT || 3000;
+
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET");
@@ -28,4 +31,4 @@ app.get("/proxy-image", async (req, res) => {
   }
 });
 
-app.listen(3000, () => console.log("Proxy server running on port 3000"));
+app.listen(PORT, () => console.log(`Proxy server running on port ${PORT}`));
